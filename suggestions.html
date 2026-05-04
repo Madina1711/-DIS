@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ұсыныстар — ӘДІС</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+    --primary:#0B3C5D;
+    --primary-hover:#1C5D99;
+    --secondary:#1C5D99;
+    --accent:#F2BB16;
+    --text:#2c3e50;
+    --text-medium:#5d6d7e;
+    --text-light:#7f8c8d;
+    --bg:#ffffff;
+    --bg-light:#f4f7fb;
+    --bg-gray:#E6F0F7;
+    --border:#e5e8e8;
+    --shadow-sm:0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md:0 4px 6px rgba(0,0,0,0.07);
+    --shadow-lg:0 10px 25px rgba(0,0,0,0.1);
+    --success:#27ae60;
+    --warning:#f2BB16;
+    --new-badge:#e74c3c;
+}
+
+.dark{
+    --primary:#4A9FD4;
+    --primary-hover:#6BB3E0;
+    --secondary:#4A9FD4;
+    --accent:#F2BB16;
+    --text:#E8F4F8;
+    --text-medium:#B8D4E3;
+    --text-light:#8FB8D4;
+    --bg:#0A1628;
+    --bg-light:#0F1F35;
+    --bg-gray:#152238;
+    --border:#1E3A5F;
+    --shadow-sm:0 2px 4px rgba(0,0,0,0.3);
+    --shadow-md:0 4px 6px rgba(0,0,0,0.4);
+    --shadow-lg:0 10px 25px rgba(0,0,0,0.5);
+    --success:#2ecc71;
+    --warning:#f1c40f;
+    --new-badge:#ff6b6b;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    padding:30px;
+    transition:all 0.3s ease;
+    min-height:100vh;
+}
+
+.container{
+    max-width:800px;
+    margin:0 auto;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.page-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:42px;
+    color:var(--primary);
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.page-subtitle{
+    text-align:center;
+    color:var(--text-light);
+    font-size:16px;
+    margin-bottom:30px;
+}
+
+/* ===== FORM CARD ===== */
+.form-card{
+    background:var(--bg-light);
+    border-radius:20px;
+    padding:40px;
+    border:2px solid var(--border);
+    transition:all 0.3s ease;
+}
+
+.form-card:hover{
+    box-shadow:var(--shadow-lg);
+    border-color:var(--primary);
+}
+
+.form-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.form-header-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:28px;
+    margin:0 auto 20px;
+    box-shadow:0 4px 15px rgba(11,60,93,0.3);
+}
+
+.form-header h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:32px;
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.form-header p{
+    color:var(--text-light);
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* ===== FORM GROUPS ===== */
+.form-group{
+    margin-bottom:24px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:var(--text);
+    font-size:14px;
+}
+
+.form-group label .required{
+    color:var(--new-badge);
+    margin-left:4px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:14px 18px;
+    border:2px solid var(--border);
+    border-radius:12px;
+    font-family:inherit;
+    font-size:15px;
+    transition:all 0.3s ease;
+    background:var(--bg);
+    color:var(--text);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(11,60,93,0.08);
+}
+
+.dark .form-group input:focus,
+.dark .form-group textarea:focus,
+.dark .form-group select:focus{
+    box-shadow:0 0 0 4px rgba(74,159,212,0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+    color:var(--text-light);
+    opacity:0.7;
+}
+
+.form-group textarea{
+    resize:vertical;
+    min-height:140px;
+}
+
+.form-group select{
+    cursor:pointer;
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237f8c8d' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 18px center;
+    padding-right:45px;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn{
+    width:100%;
+    padding:16px 24px;
+    border-radius:12px;
+    border:none;
+    background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    box-shadow:0 4px 15px rgba(11,60,93,0.3);
+}
+
+.submit-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 25px rgba(11,60,93,0.4);
+}
+
+.submit-btn:active{
+    transform:translateY(0);
+}
+
+.submit-btn i{
+    font-size:18px;
+}
+
+/* ===== SUCCESS MESSAGE ===== */
+.success-message{
+    display:none;
+    text-align:center;
+    padding:50px 30px;
+}
+
+.success-message.active{
+    display:block;
+    animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.success-icon{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--success) 0%, #2ecc71 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:40px;
+    margin:0 auto 25px;
+    box-shadow:0 4px 20px rgba(39,174,96,0.3);
+    animation:scaleIn 0.5s ease 0.2s both;
+}
+
+@keyframes scaleIn{
+    from{transform:scale(0);}
+    to{transform:scale(1);}
+}
+
+.success-message h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:28px;
+    color:var(--primary);
+    margin-bottom:12px;
+}
+
+.success-message p{
+    color:var(--text-medium);
+    font-size:15px;
+    line-height:1.7;
+    max-width:400px;
+    margin:0 auto 25px;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 28px;
+    border-radius:25px;
+    border:2px solid var(--primary);
+    background:transparent;
+    color:var(--primary);
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    text-decoration:none;
+}
+
+.back-btn:hover{
+    background:var(--primary);
+    color:white;
+    transform:translateY(-2px);
+}
+
+/* ===== INFO BOX ===== */
+.info-box{
+    background:var(--bg-gray);
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:30px;
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    border-left:4px solid var(--accent);
+}
+
+.info-box i{
+    color:var(--accent);
+    font-size:20px;
+    margin-top:2px;
+    flex-shrink:0;
+}
+
+.info-box p{
+    color:var(--text-medium);
+    font-size:14px;
+    line-height:1.6;
+    margin:0;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+    body{
+        padding:15px;
+    }
+
+    .page-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .page-title{
+        font-size:28px;
+    }
+
+    .form-card{
+        padding:25px 20px;
+    }
+
+    .form-header h2{
+        font-size:26px;
+    }
+
+    .form-header-icon{
+        width:60px;
+        height:60px;
+        font-size:24px;
+    }
+}
+</style>
+<base target="_self">
+<base target="_self">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1 class="page-title">Ұсыныстар</h1>
+    </div>
+
+    <p class="page-subtitle">Платформаға жаңа әдіс ұсынғыңыз келе ме? Төмендегі форманы толтырыңыз</p>
+
+    <div class="form-card" id="formCard">
+        <div class="form-header">
+            <div class="form-header-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <h2>Жаңа әдіс ұсыну</h2>
+            <p>Ұсынысыңызды толық сипаттап, бізге жіберіңіз. Модерациядан кейін платформада жарияланады.</p>
+        </div>
+
+        <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <p>Барлық өрістер міндетті түрде толтырылуы керек. Ұсынысыңызды тексергеннен кейін сізге жауап жібереміз.</p>
+        </div>
+
+        <form action="https://formspree.io/f/mlgaokoz" method="POST" id="suggestionForm">
+            <input type="hidden" name="_replyto" value="madinakhavazmatova@gmail.com">
+            <input type="hidden" name="_subject" value="ӘДІС платформасына жаңа ұсыныс">
+
+            <div class="form-group">
+                <label for="userName">Аты-жөніңіз <span class="required">*</span></label>
+                <input type="text" id="userName" name="name" required placeholder="Мысалы: Айгүл Серікқызы">
+            </div>
+
+            <div class="form-group">
+                <label for="userEmail">Email немесе телефон <span class="required">*</span></label>
+                <input type="text" id="userEmail" name="email" required placeholder="email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="methodCategory">Әдіс категориясы <span class="required">*</span></label>
+                <select id="methodCategory" name="category" required>
+                    <option value="">Таңдаңыз...</option>
+                    <option value="elementary">Бастауыш сынып</option>
+                    <option value="middle">Жалпы білім беру</option>
+                    <option value="high">Жоғары сынып</option>
+                    <option value="preschool">Мектепке дейінгі тәрбие</option>
+                    <option value="inclusive">Инклюзивті білім беру</option>
+                    <option value="other">Басқа</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="methodTitle">Ұсынылған әдіс атауы <span class="required">*</span></label>
+                <input type="text" id="methodTitle" name="method_title" required placeholder="Мысалы: Миға шабуыл әдісі">
+            </div>
+
+            <div class="form-group">
+                <label for="methodDescription">Әдісті сипаттау <span class="required">*</span></label>
+                <textarea id="methodDescription" name="description" required placeholder="Әдістің мақсаты, қолданылу жолы, қажетті материалдар және басқа да маңызды ақпаратты жазыңыз..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="methodBenefits">Әдістің артықшылықтары (міндетті емес)</label>
+                <textarea id="methodBenefits" name="benefits" placeholder="Бұл әдіс оқушыларға/студенттерге қандай пайда әкеледі?"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fas fa-paper-plane"></i>
+                Ұсынысты жіберу
+            </button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Ұсыныс қабылданды!</h3>
+            <p>Рахмет! Сіздің ұсынысыңыз сәтті жіберілді. Модерациядан кейін сізге жауап жібереміз.</p>
+            <a href="index.html" class="back-btn" onclick="return openPage(event, 'index.html')">
+                <i class="fas fa-arrow-left"></i> Басты бетке оралу
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// FORM HANDLING
+// ═══════════════════════════════════════════════════════════════════════════
+
+const form = document.getElementById('suggestionForm');
+const successMessage = document.getElementById('successMessage');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', function(e) {
+    // Formspree handles the actual submission
+    // We just show the success message after a brief delay
+    // to allow Formspree to process
+
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Жіберілуде...';
+    submitBtn.disabled = true;
+
+    // Let Formspree submit, then show success
+    // The page will redirect or show success based on Formspree settings
+});
+
+// If URL has ?submitted=true, show success message
+if (window.location.search.includes('submitted=true') || window.location.search.includes('thanks')) {
+    form.style.display = 'none';
+    successMessage.classList.add('active');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+function openPage(event, file) {
+    if (window.parent !== window && window.parent.loadFrame) {
+        event.preventDefault();
+        window.parent.loadFrame(file);
+        return false;
+    }
+    return true;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// THEME
+// ═══════════════════════════════════════════════════════════════════════════
+
+window.addEventListener('message', function(e) {
+    if (e.data === 'dark') {
+        document.body.classList.add('dark');
+    } else if (e.data === 'light') {
+        document.body.classList.remove('dark');
+    }
+});
+
+if (window.parent !== window) {
+    window.parent.postMessage({type: 'getTheme'}, '*');
+}
+</script>
+
+</body>
+</html>

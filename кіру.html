@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кіру — ӘДІС</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0B3C5D 0%, #1C5D99 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .auth-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 420px;
+        }
+        
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .auth-logo h1 {
+            color: #0B3C5D;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .auth-logo p {
+            color: #7f8c8d;
+            margin-top: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e5e8e8;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #0B3C5D;
+            box-shadow: 0 0 0 3px rgba(11, 60, 93, 0.1);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #0B3C5D;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #1C5D99;
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #7f8c8d;
+        }
+        
+        .auth-footer a {
+            color: #0B3C5D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .back-link:hover {
+            color: #0B3C5D;
+        }
+        
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-logo">
+        <h1>ӘДІС</h1>
+        <p>Аккаунтқа кіру</p>
+    </div>
+    
+    <div class="error-message" id="errorMsg"></div>
+    <div class="success-message" id="successMsg"></div>
+    
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+            <label for="password">Құпия сөз</label>
+            <input type="password" id="password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Кіру</button>
+    </form>
+    
+    <div class="auth-footer">
+        Аккаунт жоқ па? <a href="тіркелу.html">Тіркелу</a>
+    </div>
+    <a href="index.html" class="back-link">← Басты бетке оралу</a>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyC2NjVhAxz6o0orZsLvZO6DBpmefGWtdbs",
+        authDomain: "adis11.firebaseapp.com",
+        projectId: "adis11",
+        storageBucket: "adis11.firebasestorage.app",
+        messagingSenderId: "1076245506221",
+        appId: "1:1076245506221:web:163729dc73b8bc4b957e24",
+        measurementId: "G-ZDK8R92RMY"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const btn = document.getElementById('submitBtn');
+        const errorDiv = document.getElementById('errorMsg');
+        const successDiv = document.getElementById('successMsg');
+        
+        btn.disabled = true;
+        btn.textContent = 'Кіру...';
+        errorDiv.style.display = 'none';
+        successDiv.style.display = 'none';
+        
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                successDiv.textContent = 'Сәтті кірдіңіз! Басты бетке өтудеміз...';
+                successDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    window.location.href = 'iindexxxx.html';
+                }, 1500);
+            })
+            .catch((error) => {
+                let message = 'Қате орын алды';
+                
+                switch(error.code) {
+                    case 'auth/user-not-found':
+                        message = 'Бұл email тіркелмеген';
+                        break;
+                    case 'auth/wrong-password':
+                        message = 'Құпия сөз дұрыс емес';
+                        break;
+                    case 'auth/invalid-email':
+                        message = 'Email форматы дұрыс емес';
+                        break;
+                    case 'auth/invalid-credential':
+                        message = 'Email немесе құпия сөз дұрыс емес';
+                        break;
+                    case 'auth/too-many-requests':
+                        message = 'Тым көп әрекет. Кейінірек қайталап көріңіз';
+                        break;
+                }
+                
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Кіру';
+            });
+    });
+</script>
+
+</body>
+</html>
